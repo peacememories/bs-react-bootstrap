@@ -46,11 +46,10 @@ Some specif patterns:
 
 > ### Legend
 >
-> | :link: Binding          |
-> | ----------------------- |
-> | :white_check_mark: Done |
-> | :x: Not implemented yet |
-> | :warning: WIP           |
+> :link: Binding\
+> :white_check_mark: Done\
+> :x: Not implemented yet\
+> :warning: WIP
 
 :link: :x: Alerts\
 :link: :x: Badge\
