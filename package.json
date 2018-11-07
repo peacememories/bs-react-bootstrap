@@ -1,0 +1,44 @@
+{
+  "name": "bs-react-bootstrap",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "clean": "bsb -clean-world && rimraf lib .merlin",
+    "watch": "bsb -make-world -w",
+    "test": "exit 0"
+  },
+  "keywords": [
+    "Bootstrap",
+    "binding",
+    "BuckleScript",
+    "React",
+    "ReactJS",
+    "react-bootstrap",
+    "ReasonML",
+    "UI"
+  ],
+  "author": "Danilo Tenorio Raisi <daniloraisi@gmail.com>",
+  "repository": {
+    "url": "https://github.com/daniloraisi/bs-react-bootstrap",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/daniloraisi/bs-react-bootstrap/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react-bootstrap": "^0.32.4"
+  },
+  "devDependencies": {
+    "bs-platform": "^4.0.7",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "reason-react": "^0.5.3",
+    "rimraf": "^2.6.2"
+  },
+  "peerDependencies": {
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "reason-react": "^0.5.3"
+  }
+}
