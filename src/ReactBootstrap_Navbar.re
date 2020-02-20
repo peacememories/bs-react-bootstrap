@@ -1,5 +1,3 @@
-[@bs.module] external navbar: ReasonReact.reactClass = "react-bootstrap/lib/Navbar";
-
 [@bs.deriving jsConverter]
 type expand = [ | [@bs.as "true"] `true_ | `sm | `md | `lg | `xl];
 
@@ -7,91 +5,61 @@ type expand = [ | [@bs.as "true"] `true_ | `sm | `md | `lg | `xl];
 type fixed = [ | `top | `bottom];
 
 [@bs.deriving jsConverter]
-type stick = [ | `top | `bottom];
+type sticky = [ | `top | `bottom];
 
 [@bs.deriving jsConverter]
 type variant = [ | `light | `dark];
 
-[@bs.obj]
-external navbarProps:
+[@bs.module "react-bootstrap"] [@react.component]
+external make:
   (
-    ~bs: string=?,
-    ~fluid: bool=?,
+    ~as_: React.element=?,
+    ~bg: string=?,
     ~collapseOnSelect: bool=?,
-    ~expand: string=?,
+    ~expand: expand=?,
     ~expanded: bool=?,
-    ~fixed: string=?,
+    ~fixed: fixed=?,
     ~onSelect: 'a=?,
     ~onToggle: 'b=?,
     ~role: string=?,
-    ~stick: string=?,
-    ~variant: string=?,
+    ~sticky: sticky=?,
+    ~variant: variant=?,
     ~bsPrefix: string=?,
-    unit
+    ~children: React.element=?
   ) =>
-  _ =
-  "";
-
-let make =
-    (
-      ~bs=?,
-      ~fluid=?,
-      ~collapseOnSelect=?,
-      ~expand=?,
-      ~expanded=?,
-      ~fixed=?,
-      ~onSelect=?,
-      ~onToggle=?,
-      ~role=?,
-      ~stick=?,
-      ~variant=?,
-      ~bsPrefix=?,
-      children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=navbar,
-    ~props=
-      navbarProps(
-        ~bs?,
-        ~fluid?,
-        ~collapseOnSelect?,
-        ~expand=?Js.Option.map((. e) => expandToJs(e), expand),
-        ~expanded?,
-        ~fixed=?Js.Option.map((. f) => fixedToJs(f), fixed),
-        ~onSelect?,
-        ~onToggle?,
-        ~role?,
-        ~stick=?Js.Option.map((. s) => stickToJs(s), stick),
-        ~variant=?Js.Option.map((. v) => variantToJs(v), variant),
-        ~bsPrefix?,
-        ()
-      ),
-    children,
-  );
+  React.element =
+  "Navbar";
 
 module Brand = {
-  [@bs.module] external brand: ReasonReact.reactClass = "react-bootstrap/lib/NavbarBrand";
-
-  [@bs.obj] external brandProps: (~href: string=?, ~bsPrefix: string=?, unit) => _ = "";
-
-  let make = (~href=?, ~bsPrefix=?, children) =>
-    ReasonReact.wrapJsForReason(~reactClass=brand, ~props=brandProps(~href?, ~bsPrefix?, ()), children);
+  [@bs.scope "Navbar"] [@bs.module "react-bootstrap"] [@react.component]
+  external make:
+    (
+      ~as_: React.element=?,
+      ~href: string=?,
+      ~bsPrefix: string=?,
+      ~children: React.element=?
+    ) =>
+    React.element =
+    "Brand";
 };
 
 module Toggle = {
-  [@bs.module] external toggle: ReasonReact.reactClass = "react-bootstrap/lib/NavbarToggle";
-
-  [@bs.obj] external toggleProps: (~label: string=?, ~bsPrefix: string=?, unit) => _ = "";
-
-  let make = (~label=?, ~bsPrefix=?, children) =>
-    ReasonReact.wrapJsForReason(~reactClass=toggle, ~props=toggleProps(~label?, ~bsPrefix?, ()), children);
+  [@bs.scope "Navbar"] [@bs.module "react-bootstrap"] [@react.component]
+  external make:
+    (
+      ~as_: React.element=?,
+      ~label: string=?,
+      ~onClick: 'a=?,
+      ~bsPrefix: string=?,
+      ~children: React.element=?
+    ) =>
+    React.element =
+    "Toggle";
 };
 
 module Collapse = {
-  [@bs.module] external collapse: ReasonReact.reactClass = "react-bootstrap/lib/NavbarCollapse";
-
-  [@bs.obj] external collapseProps: (~bsPrefix: string=?, unit) => _ = "";
-
-  let make = (~bsPrefix=?, children) =>
-    ReasonReact.wrapJsForReason(~reactClass=collapse, ~props=collapseProps(~bsPrefix?, ()), children);
+  [@bs.scope "Navbar"] [@bs.module "react-bootstrap"] [@react.component]
+  external make:
+    (~bsPrefix: string=?, ~children: React.element=?) => React.element =
+    "Collapse";
 };
