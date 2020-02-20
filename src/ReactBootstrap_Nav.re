@@ -16,6 +16,7 @@ external make:
     ~role: string=?,
     ~variant: variant=?,
     ~onClick: 'c=?,
+    ~className: string=?,
     ~bsPrefix: string=?,
     ~children: React.element=?
   ) =>
