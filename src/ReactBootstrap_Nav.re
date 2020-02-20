@@ -1,99 +1,56 @@
-[@bs.module] external nav: ReasonReact.reactClass = "react-bootstrap/lib/Nav";
-
 [@bs.deriving jsConverter]
-type variant = [
-  | `tabs
-  | `pills
-];
+type variant = [ | `tabs | `pills];
 
-[@bs.obj] external makeNavProps:
+[@bs.module "react-bootstrap"] [@react.component]
+external make:
   (
     ~activeKey: string=?,
+    ~as_: React.element=?,
+    ~cardHeaderBsPrefix: string=?,
     ~fill: bool=?,
     ~justify: bool=?,
     ~navbar: bool=?,
-    ~onSelect: 'a=?,
+    ~navbarBsPrefix: string=?,
+    ~onKeyDown: 'a=?,
+    ~onSelect: 'b=?,
     ~role: string=?,
-    ~variant: string=?,
+    ~variant: variant=?,
+    ~onClick: 'c=?,
     ~bsPrefix: string=?,
-    ~pullRight: bool=?,
-    unit
-  ) => _ = "";
-
-let make =
-    (
-      ~activeKey=?,
-      ~fill=?,
-      ~justify=?,
-      ~navbar=?,
-      ~onSelect=?,
-      ~role=?,
-      ~variant=?,
-      ~bsPrefix=?,
-      ~pullRight=?,
-      children
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=nav,
-    ~props=makeNavProps(
-      ~activeKey?,
-      ~fill?,
-      ~justify?,
-      ~navbar?,
-      ~onSelect?,
-      ~role?,
-      ~variant=?Js.Option.map((. v) => variantToJs(v), variant),
-      ~bsPrefix?,
-      ~pullRight?,
-      ()
-    ),
-    children
-  );
+    ~children: React.element=?
+  ) =>
+  React.element =
+  "Nav";
 
 module Item = {
-  [@bs.module] external item: ReasonReact.reactClass = "react-bootstrap/lib/NavItem";
-
-  [@bs.obj] external itemProps:
+  [@bs.scope "Nav"] [@bs.module "react-bootstrap"] [@react.component]
+  external make:
     (
-      ~active: bool=?,
-      ~disabled: bool=?,
-      ~eventKey: 'a=?,
-      ~href: string=?,
-      ~onSelect: 'b=?,
-      ~onClick: 'c=?,
+      ~as_: React.element=?,
       ~role: string=?,
       ~bsPrefix: string=?,
-      ~className: string=?,
-      unit
-    ) => _ = "";
+      ~onClick: 'a=?,
+      ~children: React.element=?
+    ) =>
+    React.element =
+    "Item";
+};
 
-  let make =
-      (
-        ~active=?,
-        ~disabled=?,
-        ~eventKey=?,
-        ~href=?,
-        ~onSelect=?,
-        ~onClick=?,
-        ~role=?,
-        ~bsPrefix=?,
-        ~className=?,
-        children
-      ) =>
-    ReasonReact.wrapJsForReason(
-      ~reactClass=item,
-      ~props=itemProps(
-        ~active?,
-        ~disabled?,
-        ~eventKey?,
-        ~href?,
-        ~onSelect?,
-        ~onClick?,
-        ~role?,
-        ~bsPrefix?,
-        ~className?,
-        ()
-      ),
-      children
-    );
+module Link = {
+  [@bs.scope "Nav"] [@bs.module "react-bootstrap"] [@react.component]
+  external make:
+    (
+      ~active: bool=?,
+      ~as_: React.element=?,
+      ~disabled: bool=?,
+      ~eventKey: string=?,
+      ~href: string=?,
+      ~onSelect: 'a=?,
+      ~role: string=?,
+      ~bsPrefix: string=?,
+      ~onClick: 'b=?,
+      ~children: React.element=?
+    ) =>
+    React.element =
+    "Link";
 };
