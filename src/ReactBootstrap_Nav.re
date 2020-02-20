@@ -1,11 +1,7 @@
-[@bs.deriving jsConverter]
-type variant = [ | `tabs | `pills];
-
 [@bs.module "react-bootstrap"] [@react.component]
 external make:
   (
     ~activeKey: string=?,
-    ~as_: React.element=?,
     ~cardHeaderBsPrefix: string=?,
     ~fill: bool=?,
     ~justify: bool=?,
@@ -14,7 +10,7 @@ external make:
     ~onKeyDown: 'a=?,
     ~onSelect: 'b=?,
     ~role: string=?,
-    ~variant: variant=?,
+    ~variant: [@bs.string] [ | `tabs | `pills]=?,
     ~onClick: 'c=?,
     ~className: string=?,
     ~bsPrefix: string=?,
@@ -27,7 +23,6 @@ module Item = {
   [@bs.scope "Nav"] [@bs.module "react-bootstrap"] [@react.component]
   external make:
     (
-      ~as_: React.element=?,
       ~role: string=?,
       ~bsPrefix: string=?,
       ~onClick: 'a=?,
@@ -42,7 +37,6 @@ module Link = {
   external make:
     (
       ~active: bool=?,
-      ~as_: React.element=?,
       ~disabled: bool=?,
       ~eventKey: string=?,
       ~href: string=?,

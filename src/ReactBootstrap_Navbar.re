@@ -1,7 +1,6 @@
 [@bs.module "react-bootstrap"] [@react.component]
 external make:
   (
-    ~as_: React.element=?,
     ~bg: string=?,
     ~collapseOnSelect: bool=?,
     ~expand: [@bs.string] [ | [@bs.as "true"] `true_ | `sm | `md | `lg | `xl]=?,
@@ -21,12 +20,7 @@ external make:
 module Brand = {
   [@bs.scope "Navbar"] [@bs.module "react-bootstrap"] [@react.component]
   external make:
-    (
-      ~as_: React.element=?,
-      ~href: string=?,
-      ~bsPrefix: string=?,
-      ~children: React.element=?
-    ) =>
+    (~href: string=?, ~bsPrefix: string=?, ~children: React.element=?) =>
     React.element =
     "Brand";
 };
@@ -35,10 +29,8 @@ module Toggle = {
   [@bs.scope "Navbar"] [@bs.module "react-bootstrap"] [@react.component]
   external make:
     (
-      ~as_: React.element=?,
       ~label: string=?,
       ~onClick: 'a=?,
-      ~ariaControls: string=?,
       ~bsPrefix: string=?,
       ~children: React.element=?
     ) =>
